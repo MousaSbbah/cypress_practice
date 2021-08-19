@@ -19,4 +19,13 @@
 module.exports = (on, config) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
+  const overWriteConfig = {};
+  if (config.userAgent === 'mobile') {
+    overWriteConfig.userAgent='Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A356 Safari/604.1';
+    overWriteConfig.viewportWidth=375;
+    overWriteConfig.viewportHeight=800;
+
+  }
+
+  return {...config, ...overWriteConfig}
 }

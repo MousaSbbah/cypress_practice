@@ -8,8 +8,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "cypress-open-mobile": "cypress run --browser chrome --config  integrationFolder=cypress/integration/mytest,userAgent=mobile",
-    "cypress-open": "cypress run --config integrationFolder=cypress/integration/mytest"
+    "cypress-run-mobile": "cypress run --browser chrome --config  integrationFolder=cypress/integration/mytest,userAgent=mobile",
+    "cypress-run": "cypress run --config integrationFolder=cypress/integration/mytest"
 
   },
   "author": "",

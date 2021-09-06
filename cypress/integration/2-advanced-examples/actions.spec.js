@@ -21,7 +21,7 @@ context('Actions', () => {
       .type('{ctrl}{control}') //these are equivalent
       .type('{meta}{command}{cmd}') //these are equivalent
       .type('{shift}')
-
+SSSSSSSSSSSSSSS
       // Delay each keypress by 0.1 sec
       .type('slow.typing@email.com', { delay: 100 })
       .should('have.value', 'slow.typing@email.com')

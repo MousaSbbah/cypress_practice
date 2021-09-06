@@ -1,32 +1,27 @@
-# This workflow will do a clean install of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+name: Cypress Tests with installation job
 
-name: Node.js CI
-
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+on: [push]
 
 jobs:
-  build:
-
+  install:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [14.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
+    container: cypress/browsers:node12.18.3-chrome87-ff82
     steps:
-    - run: npm install
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm run build --if-present
-    - run: npm run cypress-run-mobile
-    - run: npm run cypress-run
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Save build folder
+        uses: actions/upload-artifact@v2
+        with:
+          name: build
+          if-no-files-found: error
+          path: build
+
+      - name: Cypress install
+        uses: cypress-io/github-action@v2
+        with:
+          # Disable running of tests within install job
+          runTests: false
+          build: yarn build
+      -run: npm run cypress-run-mobile
+      -run: npm run cypress-run

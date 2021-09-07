@@ -1,5 +1,3 @@
 {
-
-    "defaultCommandTimeout": 10000,
-   "browser": "chrome" 
+    "defaultCommandTimeout": 10000
 }

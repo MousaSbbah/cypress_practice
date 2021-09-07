@@ -15,5 +15,4 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           start: npm run cypress-run
-          browser: chrome
-          integrationFolder: cypress/integration/mytest
+         
